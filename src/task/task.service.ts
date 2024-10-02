@@ -11,9 +11,9 @@ export class TaskService {
         return await this.prisma.task.findMany();
     }
 
-    async getTaskById(id: string): Promise<Task> {
+    async getTaskById(id: number): Promise<Task> {
         return await this.prisma.task.findUnique({
-            where: { id: +id }
+            where: { id }
         });
     }
 
@@ -23,16 +23,16 @@ export class TaskService {
         });
     }
 
-    async updateTask(id: string, data: Task): Promise<Task> {
+    async updateTask(id: number, data: Task): Promise<Task> {
         return await this.prisma.task.update({
-            where: { id: +id },
+            where: { id  },
             data
         });
     }
 
-    async deleteTask(id: string): Promise<Task> {
+    async deleteTask(id: number): Promise<Task> {
         return this.prisma.task.delete({
-            where: { id: +id }
+            where: { id  }
         })
     }
 }
